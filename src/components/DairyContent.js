@@ -6,9 +6,9 @@ class DairyContent extends Component {
     render () {
         return (
             <div>
-             <p> Content </p>
-             <TaskListView />
-             <CommentListView />
+             <TaskListView tasks={this.props.tasks}/>
+             <CommentListView comments={this.props.comments}
+             taskID={this.props.currentTaskID}/>
              </div>
         );
     }
