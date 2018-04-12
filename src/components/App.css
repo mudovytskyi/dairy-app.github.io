@@ -1,28 +1,132 @@
+html, body {
+  /* width: 100%;
+  display: inline;
+  margin: auto; */
+  font-family: "OpenSans";
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
 .App {
   text-align: center;
+  background-color: #f9f9f9;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  align-content: space-around;
+  /* display: inline-flex; */
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
+/* 
 .App-title {
+  font-size: 2.25em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: inherit;
+  font-weight: 300;
+}
+
+.App-slogan {
   font-size: 1.5em;
+  color: #808080;
+  background-color: inherit;
+}
+*/
+.DairyCover {
+  float: left;
+  background-color: #2b2f3e;
+  width: 20%;
+  height: 100%;
+} 
+
+.DairyContent {
+  float: right;
+  background-color: #f9f9f9;
+  display: flex;
+  width: 80%;
+  height: 100%;
+  
+  /* border: 3px solid #333; */
 }
 
-.App-intro {
-  font-size: large;
+.TaskListView {
+  width: 100%;
+  align-content: center;
+}
+.AddTaskBar , .AddTaskBar form {
+  width: 100%;
+
+}
+.TaskList {
+ width: 100%;
+ /* margin: auto; */
+ overflow: scroll;
+ scroll-behavior: auto;
 }
 
+.TaskRecord {
+  border: 2px solid #000 top;
+  width: 100%;
+  display: flex;
+  /* width: inherit; */
+  /* flex-wrap: wrap; */
+  align-items: center;
+}
+    .task-name {
+      /* width: 70%; */
+      text-align: left;
+    }
+    
 
+    input[type="button"] , input[type="submit"] {
+      background-color: #27ccc0;
+      color: #ffffff;
+      border: none;
+      border-radius: 3px;
+      text-align: center;
+      margin:0;
+      font-weight: 600;
+      font-size: 1em;
+      height: 2.75em;
+    }
+    
+    .num-comments input[type="button"] {
+      border-radius: 10px;
+      height: 1.2em;
+      float: left;
+    }
+    
+    .delete-btn input[type="button"] {
+      background-color: #ffffff;
+      color: #ff305a;
+      float: right;
+      height: 2.125em;
+      font-weight: 400;
+      border: 2px solid #ff305a
+    }
+.CommentListView {
+  width: 100%;
+  align-content: center;
+} 
+.CommentList {
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: auto;
+
+}
+.CommentRecord {
+  width: 100%;
+  display: flex;
+  align-self: auto;
+  align-items: flex-start;
+  align-content: space-between;
+  
+}
+.comment-name {
+  display: block;
+  width: 100%;
+  text-align: justify;
+}
 
 .placeholder-icon {
   width: 81px;
@@ -37,6 +141,83 @@
 .CommentRecord:nth-child(even) .placeholder-icon{
   background-color: #47568c;
 }
+/* .Diary */
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+} */
+
+/* .App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+} */
+/* 
+.App-intro {
+  font-size: large;
+} */
+
+
+/* 
+
+Tasks
+
+*/
+
+/* input[type="button"] , input[type="submit"] {
+  background-color: #27ccc0;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  margin:0;
+  font-weight: 600;
+  font-size: 1em;
+  height: 3.75em;
+}
+
+.num-comments input[type="button"] {
+  border-radius: 10px;
+  height: 2em;
+}
+
+.delete-btn input[type="button"] {
+  background-color: #ffffff;
+  color: #ff305a;
+  
+  height: 3.125em;
+  font-weight: 400;
+  border: 2px solid #ff305a
+}
+.TaskList {
+  overflow: scroll;
+}
+
+.TaskRecord {
+  width: 100%;
+  margin: auto;
+  display: inline;
+  overflow: auto;
+}
+
+.CommentList {
+  overflow: scroll;
+}
+
+.placeholder-icon {
+  width: 81px;
+  height: 81px;
+  background-color: #e6e6e6;
+} 
+
+.CommentRecord:nth-child(odd) .placeholder-icon {
+  background-color: #ff8a00;
+}
+
+.CommentRecord:nth-child(even) .placeholder-icon{
+  background-color: #47568c;
+} */
 /* 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

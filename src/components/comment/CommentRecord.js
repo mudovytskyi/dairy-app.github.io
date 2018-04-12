@@ -7,7 +7,7 @@ class CommentRecord extends Component {
             <div className="CommentRecord">
             <CommentIcon />
             <div className="comment-name">
-                {this.props.value}
+                <span>{this.props.value}</span>
             </div>
         </div>
         );

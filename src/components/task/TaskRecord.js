@@ -11,7 +11,7 @@ class TaskRecord extends Component {
         return (
             <div className="TaskRecord">
                 <div className="task-name">
-                    {this.props.name}
+                    <span>{this.props.name}</span>
                 </div>
                 <div className="num-comments">
                     <input type="button" value={this.props.comments.length}/>

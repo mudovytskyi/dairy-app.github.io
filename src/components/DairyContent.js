@@ -5,7 +5,7 @@ import CommentListView from './comment/CommentListView';
 class DairyContent extends Component {
     render () {
         return (
-            <div>
+            <div className="DairyContent">
              <TaskListView tasks={this.props.tasks}/>
              <CommentListView comments={this.props.comments}
              taskID={this.props.currentTaskID}/>
