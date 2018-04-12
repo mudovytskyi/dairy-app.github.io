@@ -7,9 +7,9 @@ class AddTaskBar extends Component {
         // console.log('test');
         // console.log(this.refs.newNameInput.value);
         // read the value that the user types
-        let newNameValue = this.refs.newNameInput.value;
-        if (newNameValue) {
-            this.props.addTask(newNameValue);
+        let newTaskValue = this.refs.newTaskInput.value;
+        if (newTaskValue) {
+            this.props.addTask(newTaskValue);
             this.refs.newTaskInput.value = '';
         }
     }

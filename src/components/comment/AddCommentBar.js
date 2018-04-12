@@ -7,6 +7,7 @@ class AddCommentBar extends Component {
     handleKeyPress = (event) => {
         event.preventDefault();
         
+        
         if (event.ctrlKey && event.keyCode == 13) {
             let newCommentValue = this.refs.newCommentTA.value;
             if (newCommentValue) {

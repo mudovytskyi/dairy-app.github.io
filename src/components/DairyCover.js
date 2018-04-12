@@ -4,7 +4,7 @@ import  React, { Component } from 'react';
 class DairyCover extends Component {
     render () {
         return (
-            <div>
+            <div className="DairyCover">
                 <div className="App-title">
                 dairy app 
                 </div>

@@ -26,7 +26,7 @@ class TaskListView extends Component {
     render () {
         console.log(this.props.tasks)
         return (
-            <div>
+            <div className="TaskListView">
             <h1 className="App-title">Items</h1>
             <AddTaskBar addTask={this.addTask}/>
             <TaskList items={this.props.tasks}/>

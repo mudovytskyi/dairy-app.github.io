@@ -1,0 +1,126 @@
+.root {
+  width: 100%;
+  display: inline;
+  margin: auto;
+}
+.App {
+  text-align: center;
+  font-family: "OpenSans";
+  background-color: #f9f9f9;
+  display: inline;
+  /* width: 100%; */
+}
+
+.App-title {
+  font-size: 2.25em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: inherit;
+  font-weight: 300;
+}
+
+.App-slogan {
+  font-size: 1.5em;
+  color: #808080;
+  background-color: inherit;
+}
+
+.DiaryCover {
+  float: left;
+  background-color: #2b2f3e;
+  /* width: 23%; */
+  height: 100%;
+  display: inline;
+}
+
+.DiaryContent {
+  float: right;
+  background-color: #2b2f3e;
+  /* width: 77%; */
+  height: 100%;
+  /* overflow: auto; */
+  display: inline;  
+}
+
+/* .Diary */
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+} */
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+/* 
+.App-intro {
+  font-size: large;
+} */
+
+
+/* 
+
+Tasks
+
+*/
+
+input[type="button"] , input[type="submit"] {
+  background-color: #27ccc0;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  margin:0;
+  font-weight: 600;
+  font-size: 1em;
+  height: 3.75em;
+}
+
+.num-comments input[type="button"] {
+  border-radius: 10px;
+  height: 2em;
+}
+
+.delete-btn input[type="button"] {
+  background-color: #ffffff;
+  color: #ff305a;
+  
+  height: 3.125em;
+  font-weight: 400;
+  border: 2px solid #ff305a
+}
+.TaskList {
+  overflow: scroll;
+}
+
+.TaskRecord {
+  width: 100%;
+  margin: auto;
+  display: inline;
+  overflow: auto;
+}
+
+.CommentList {
+  overflow: scroll;
+}
+
+.placeholder-icon {
+  width: 81px;
+  height: 81px;
+  background-color: #e6e6e6;
+} 
+
+.CommentRecord:nth-child(odd) .placeholder-icon {
+  background-color: #ff8a00;
+}
+
+.CommentRecord:nth-child(even) .placeholder-icon{
+  background-color: #47568c;
+}
+/* 
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
