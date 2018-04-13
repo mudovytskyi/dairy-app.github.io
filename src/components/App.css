@@ -66,7 +66,7 @@ html, body {
   background-color: #f9f9f9;
   display: flex;
   width: 80%;
-  height: 100%;
+  /* height: 100%; */
   padding: 40px 40px 40px 40px;
   align-content: space-between;
   
@@ -242,14 +242,19 @@ input[type="button"].delete-btn {
   align-content: center;
   background-color: #ffffff;
   
-  padding: 10px 20px 30px;  
+  padding: 10px 40px 10px 30px;  
   margin: 0;
   margin-left: 2%;
   box-shadow: -1px 1px 10px #bababa;
+  overflow: auto;
 } 
 .CommentList {
   width: 100%;
-  float: 4;
+  padding-top: 35px;  
+  /* overflow: scroll; */
+  overflow-y: auto;
+  
+  /* float: 4; */
   /* overflow: scroll; */
   /* scroll-behavior: auto; */
 
@@ -260,12 +265,23 @@ input[type="button"].delete-btn {
   align-self: auto;
   align-items: flex-start;
   align-content: space-between;
-  
+  padding: 25px 0 40px 0;
+  border-bottom: 2px solid #e8e8e8;
+}
+.CommentRecord:last-of-type {
+  border-bottom: none;
 }
 .comment-name {
+  font: 300 1.14em/1.5em "Open Sans";
+  /* font-family:Open Sans"; */
+  /* font-size: 1.2em; */
+  margin-left: 25px;
+  margin-top: -5px;
   display: block;
   width: 100%;
-  text-align: justify;
+  text-align: left;
+  color: #666666;
+  hyphens: auto;
 }
 
 .placeholder-icon {
@@ -280,4 +296,27 @@ input[type="button"].delete-btn {
 
 .CommentRecord:nth-child(even) .placeholder-icon{
   background-color: #47568c;
+}
+
+.AddCommentBar {
+  display: flex;
+  height: 100px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+}
+
+.comment-new, .comment-new textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.comment-new textarea {
+  border: 2px solid #cccccc;
+  font: 300 1.14em/1.5em "Open Sans";
+  text-align: left;
+  color: #666666;
+  hyphens: auto;
+  padding-left: 0.5em;
+  resize: none;
+  margin-left: 25px;
 }
