@@ -1,5 +1,5 @@
 import  React, { Component } from 'react';
-
+import $ from 'jquery';
 
 class TaskRecord extends Component {
 
@@ -7,9 +7,12 @@ class TaskRecord extends Component {
         this.props.onClick(this.props._id)
      };
 
-    render () {
-        return (
-            <div className="TaskRecord">
+     handleSelected = (event) => {
+        console.log("pass", event.target);
+        $('.task-selected').removeClass('task-selected');
+        $(event.currentTarget).addClass('task-selected');
+     };
+/*  <div className="TaskRecord">
                 <div className="task-name">
                     <span>{this.props.name}</span>
                 </div>
@@ -19,7 +22,19 @@ class TaskRecord extends Component {
                 <div className="delete-btn" onClick={this.handleClick}>
                     <input type="button" value="Delete"/>
                 </div>
-            </div>
+            </div> */
+    render () {
+        return (
+            <li className="TaskRecord" onClick={this.handleSelected.bind(this)}>
+                <div className="indicator"/>
+                <div className="task">
+                    <span className="task-name">{this.props.name}</span>
+                    <input className="num-comments" type="button" value={this.props.comments.length}/>
+                </div>
+                <div className="task-action">
+                <input className="delete-btn" type="button" value="Delete" onClick={this.handleClick} />
+                </div>
+            </li>
         );
     }
 }

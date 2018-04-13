@@ -5,7 +5,7 @@ class CommentList extends Component {
     render () {
         console.log(this.props.items)
         return (
-            <div className="TaskList">{
+            <div className="CommentList">{
                 
                 Object.keys(this.props.items).map(commentID =>
                    

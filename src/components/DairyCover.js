@@ -5,7 +5,7 @@ class DairyCover extends Component {
     render () {
         return (
             <div className="DairyCover">
-                <div className="App-title">
+                <div className="App-name">
                 dairy app 
                 </div>
                 <div className="App-slogan">

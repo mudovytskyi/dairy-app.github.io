@@ -1,117 +1,257 @@
 html, body {
-  /* width: 100%;
-  display: inline;
-  margin: auto; */
-  font-family: "OpenSans";
-  display: flex;
+
   height: 100%;
   width: 100%;
+  font-family: "Open Sans";
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
+.root {
+  height: 100%;
+  display: block;
+}
 .App {
   text-align: center;
   background-color: #f9f9f9;
   height: 100%;
   width: 100%;
-  margin: auto;
-  align-content: space-around;
+  display: flex;
   /* display: inline-flex; */
+  margin: 0;
+  /* bottom: 0; */
+  border: none;
+  overflow: auto;
+  /* align-content: space-around; */
 }
-/* 
-.App-title {
-  font-size: 2.25em;
+
+.App-name {
+  font-size: 3.5em;
+  
+  font-family: "Open Sans Light";
   text-transform: uppercase;
   color: #ffffff;
-  background-color: inherit;
-  font-weight: 300;
+  text-align: left;
+}
+
+.App-title {
+  font-size: 3.5em;
+  font-family: "Open Sans Light";
+  color: #565a69;
+  text-align: left;
+  margin:0;
 }
 
 .App-slogan {
-  font-size: 1.5em;
+  font-size: 1.7em;
+  word-spacing: 0.1em;
   color: #808080;
-  background-color: inherit;
+  text-align:left;
 }
-*/
+
 .DairyCover {
   float: left;
   background-color: #2b2f3e;
   width: 20%;
   height: 100%;
+  padding: 30px 0 0 40px;
 } 
 
 .DairyContent {
   float: right;
+  margin: 0;
+  border: 0;
   background-color: #f9f9f9;
   display: flex;
   width: 80%;
   height: 100%;
+  padding: 40px 40px 40px 40px;
+  align-content: space-between;
   
-  /* border: 3px solid #333; */
 }
 
 .TaskListView {
-  width: 100%;
+  width: 45%;
+  /* height: 100%; */
+  /* background-color: #fafafa; */
+  background-color: #ffffff;
+  float: left;
   align-content: center;
+  padding: 10px 20px 0 30px;  
+  box-shadow: -1px 1px 10px #bababa;
 }
-.AddTaskBar , .AddTaskBar form {
+.AddTaskBar {
+  padding: 20px 10px 0px 20px;
   width: 100%;
-
+  display: flex;
+  align-items: center;
 }
+
+.AddTaskBar input[type="submit"] {
+  width: 30%;
+  height: 2.8m;
+  /* margin: 0; */
+  margin-left: 2%;
+  /* padding:0; */
+  font-size: 1em;
+  line-height: 2.75em;
+}
+.AddTaskBar input[type="text"] {
+  font-family: "Open Sans Semibold";
+  font-size: 1.5em;
+  height: 2.1em;
+  line-height: 2.75em;
+  border: 2px #cccccc solid;
+  border-radius: 5px;
+  background-color: inherit;
+  /* box-shadow: 0 0 3px #cccccc; */
+  /* box-shadow: none; */
+  margin: 0;
+  padding: 0 0 0 0.707em;
+  vertical-align: middle;
+  width: 60%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b4b4b4;
+  font-size: 1em;
+  /* line-height: 1.5em; */
+  /* height: 2.85em; */
+  
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #b4b4b4;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #b4b4b4;
+}
+
 .TaskList {
- width: 100%;
- /* margin: auto; */
- overflow: scroll;
- scroll-behavior: auto;
+  /* width: 100%; */
+  padding: 0px 10px 0px 20px;
+ 
+ /* height: 100%; */
+ /* overflow: scroll; */
+ /* scroll-behavior: auto; */
 }
 
 .TaskRecord {
-  border: 2px solid #000 top;
+  border:none;
+  border-bottom: 2px solid #e8e8e8;
   width: 100%;
   display: flex;
-  /* width: inherit; */
-  /* flex-wrap: wrap; */
+  /* vertical-align: middle; */
+  /* align-content: center; */
   align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  overflow: auto;
 }
-    .task-name {
-      /* width: 70%; */
-      text-align: left;
-    }
-    
 
-    input[type="button"] , input[type="submit"] {
-      background-color: #27ccc0;
-      color: #ffffff;
-      border: none;
-      border-radius: 3px;
-      text-align: center;
-      margin:0;
-      font-weight: 600;
-      font-size: 1em;
-      height: 2.75em;
-    }
-    
-    .num-comments input[type="button"] {
-      border-radius: 10px;
-      height: 1.2em;
-      float: left;
-    }
-    
-    .delete-btn input[type="button"] {
-      background-color: #ffffff;
-      color: #ff305a;
-      float: right;
-      height: 2.125em;
-      font-weight: 400;
-      border: 2px solid #ff305a
-    }
+.task-selected .indicator {
+  visibility: visible;
+  /* border-left: 8px solid  #f72d57;  */
+  /* background-color: #27ccc0; */
+}
+.indicator {
+  position: absolute;
+  width: 8px;
+  height: 84px;
+  margin-left: -54px;
+  background-color: #f72d57;
+  visibility: hidden;
+}
+.task {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+/* .task-action { */
+  /* padding: 0; */
+  /* padding-right: 10; */
+/* } */
+.task-name {
+  font-family: "Open Sans Semibold";
+  text-align: left;
+  font-size: 1.5em;
+  line-height: 1.5em;
+ 
+  
+}
+
+
+/* input[type="button"]:active , input[type="submit"]:active {
+  /* transform: none; */
+  /* position: relative; */
+/* } */
+
+input[type="button"] , input[type="submit"] {
+  background-color: #27ccc0;
+  border: 1px solid #27ccc0;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  margin:0;
+}
+
+.AddTaskBar input[type="submit"] {
+  font-family: "Open Sans Semibold";
+  font-size: 1.5em;
+  /* width: 30%; */
+  height: 2.25em;
+  padding:0;
+  line-height: 1.7em;
+  /* border-radius: 5px; */
+}
+
+input[type="button"].num-comments  {
+  /* font-family: ; */
+  /* font-weight: 800; */
+  font: 700 1.3em/1.3em "Open Sans";
+  border-radius: 15px;
+  text-align: center;
+  height: 1.3em;
+  float: left;
+  margin: 0 0.5em;
+  padding: 0 10px 0 10px;
+}
+
+input[type="button"].delete-btn {
+  font-family: "Open Sans Light";
+  font-size: 1.5em;
+  background-color: #ffffff;
+  color: #ff305a;
+  /* float: right; */
+  /* margin-right: 10; */
+  width: 6.2em;
+  margin:0;
+  padding: 0;
+  height: 2.25em;
+  /* font-weight: 400; */
+  border: 2px solid #ff3059c0;
+}
+
+
 .CommentListView {
-  width: 100%;
+  width: 55%;
   align-content: center;
+  background-color: #ffffff;
+  
+  padding: 10px 20px 30px;  
+  margin: 0;
+  margin-left: 2%;
+  box-shadow: -1px 1px 10px #bababa;
 } 
 .CommentList {
   width: 100%;
-  overflow: scroll;
-  scroll-behavior: auto;
+  float: 4;
+  /* overflow: scroll; */
+  /* scroll-behavior: auto; */
 
 }
 .CommentRecord {
@@ -141,85 +281,3 @@ html, body {
 .CommentRecord:nth-child(even) .placeholder-icon{
   background-color: #47568c;
 }
-/* .Diary */
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-} */
-
-/* .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-} */
-/* 
-.App-intro {
-  font-size: large;
-} */
-
-
-/* 
-
-Tasks
-
-*/
-
-/* input[type="button"] , input[type="submit"] {
-  background-color: #27ccc0;
-  color: #ffffff;
-  border: none;
-  border-radius: 3px;
-  text-align: center;
-  margin:0;
-  font-weight: 600;
-  font-size: 1em;
-  height: 3.75em;
-}
-
-.num-comments input[type="button"] {
-  border-radius: 10px;
-  height: 2em;
-}
-
-.delete-btn input[type="button"] {
-  background-color: #ffffff;
-  color: #ff305a;
-  
-  height: 3.125em;
-  font-weight: 400;
-  border: 2px solid #ff305a
-}
-.TaskList {
-  overflow: scroll;
-}
-
-.TaskRecord {
-  width: 100%;
-  margin: auto;
-  display: inline;
-  overflow: auto;
-}
-
-.CommentList {
-  overflow: scroll;
-}
-
-.placeholder-icon {
-  width: 81px;
-  height: 81px;
-  background-color: #e6e6e6;
-} 
-
-.CommentRecord:nth-child(odd) .placeholder-icon {
-  background-color: #ff8a00;
-}
-
-.CommentRecord:nth-child(even) .placeholder-icon{
-  background-color: #47568c;
-} */
-/* 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
