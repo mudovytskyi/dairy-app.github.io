@@ -4,7 +4,8 @@ import TaskList from './TaskList';
 import $ from 'jquery';
 class TaskListView extends Component {
     addTask = (newTaskName) => {
-        $("li:last").scrollntToView();
+        console.log(newTaskName)
+        // $("li:last").scrollntToView();
         // api;
         // api.addName(newName, contestId).then(resp =>
         //     this.setState({
@@ -27,7 +28,7 @@ class TaskListView extends Component {
         console.log(this.props.tasks)
         return (
             <div className="TaskListView">
-            <h1 className="App-title">Items</h1>
+            <p className="App-title">Items</p>
             <AddTaskBar addTask={this.addTask}/>
             <TaskList items={this.props.tasks}/>
              </div>
