@@ -6,7 +6,8 @@ class CommentList extends Component {
         // console.log(this.props.items)
         if(this.props.items) {
             return (
-                    <div className="CommentList">{
+                <nav>
+                    <ul className="CommentList">{
                             Object.keys(this.props.items).map(commentID =>
                                 
                                 <CommentRecord 
@@ -16,7 +17,8 @@ class CommentList extends Component {
                                 
                             )
                         }
-                    </div>
+                    </ul>
+                </nav>
                 );
         } else {
             return (

@@ -20,12 +20,9 @@ html, body {
   height: 100%;
   width: 100%;
   display: flex;
-  /* display: inline-flex; */
   margin: 0;
-  /* bottom: 0; */
   border: none;
   overflow: auto;
-  /* align-content: space-around; */
 }
 
 .App-name {
@@ -67,16 +64,12 @@ html, body {
   background-color: #f9f9f9;
   display: flex;
   width: 80%;
-  /* height: 100%; */
   padding: 40px 40px 40px 40px;
   align-content: space-between;
-  
 }
 
 .TaskListView {
   width: 45%;
-  /* height: 100%; */
-  /* background-color: #fafafa; */
   background-color: #ffffff;
   float: left;
   align-content: center;
@@ -93,9 +86,7 @@ html, body {
 .AddTaskBar input[type="submit"] {
   width: 30%;
   height: 2.8m;
-  /* margin: 0; */
   margin-left: 2%;
-  /* padding:0; */
   font-size: 1em;
   line-height: 2.75em;
 }
@@ -107,8 +98,6 @@ html, body {
   border: 2px #cccccc solid;
   border-radius: 5px;
   background-color: inherit;
-  /* box-shadow: 0 0 3px #cccccc; */
-  /* box-shadow: none; */
   margin: 0;
   padding: 0 0 0 0.707em;
   vertical-align: middle;
@@ -118,9 +107,6 @@ html, body {
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #b4b4b4;
   font-size: 1em;
-  /* line-height: 1.5em; */
-  /* height: 2.85em; */
-  
   opacity: 1; /* Firefox */
 }
 
@@ -133,12 +119,10 @@ html, body {
 }
 
 .TaskList {
-  /* width: 100%; */
   padding: 0px 10px 0px 20px;
- 
- /* height: 100%; */
- /* overflow: scroll; */
- /* scroll-behavior: auto; */
+
+ overflow: hidden;
+ overflow-y: auto;
 }
 
 .TaskRecord {
@@ -146,8 +130,6 @@ html, body {
   border-bottom: 2px solid #e8e8e8;
   width: 100%;
   display: flex;
-  /* vertical-align: middle; */
-  /* align-content: center; */
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
@@ -156,9 +138,8 @@ html, body {
 
 .task-selected .indicator {
   visibility: visible;
-  /* border-left: 8px solid  #f72d57;  */
-  /* background-color: #27ccc0; */
 }
+
 .indicator {
   position: absolute;
   width: 8px;
@@ -172,10 +153,7 @@ html, body {
   align-items: center;
   vertical-align: middle;
 }
-/* .task-action { */
-  /* padding: 0; */
-  /* padding-right: 10; */
-/* } */
+
 .task-name {
   font-family: "Open Sans Semibold";
   text-align: left;
@@ -184,12 +162,6 @@ html, body {
  
   
 }
-
-
-/* input[type="button"]:active , input[type="submit"]:active {
-  /* transform: none; */
-  /* position: relative; */
-/* } */
 
 input[type="button"] , input[type="submit"] {
   background-color: #27ccc0;
@@ -203,16 +175,12 @@ input[type="button"] , input[type="submit"] {
 .AddTaskBar input[type="submit"] {
   font-family: "Open Sans Semibold";
   font-size: 1.5em;
-  /* width: 30%; */
   height: 2.25em;
   padding:0;
   line-height: 1.7em;
-  /* border-radius: 5px; */
 }
 
 input[type="button"].num-comments  {
-  /* font-family: ; */
-  /* font-weight: 800; */
   font: 700 1.3em/1.3em "Open Sans";
   border-radius: 15px;
   text-align: center;
@@ -227,13 +195,10 @@ input[type="button"].delete-btn {
   font-size: 1.5em;
   background-color: #ffffff;
   color: #ff305a;
-  /* float: right; */
-  /* margin-right: 10; */
   width: 6.2em;
   margin:0;
   padding: 0;
   height: 2.25em;
-  /* font-weight: 400; */
   border: 2px solid #ff3059c0;
 }
 
@@ -251,15 +216,13 @@ input[type="button"].delete-btn {
 } 
 .CommentList {
   width: 100%;
+  height: 600px;
   padding-top: 35px;  
-  /* overflow: scroll; */
+  overflow: hidden;
   overflow-y: auto;
-  
-  /* float: 4; */
-  /* overflow: scroll; */
-  /* scroll-behavior: auto; */
-
 }
+
+
 .CommentRecord {
   width: 100%;
   display: flex;
@@ -274,8 +237,6 @@ input[type="button"].delete-btn {
 }
 .comment-name {
   font: 300 1.14em/1.5em "Open Sans";
-  /* font-family:Open Sans"; */
-  /* font-size: 1.2em; */
   margin-left: 25px;
   margin-top: -5px;
   display: block;
