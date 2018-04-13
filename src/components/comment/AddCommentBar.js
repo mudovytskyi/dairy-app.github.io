@@ -21,10 +21,10 @@ class AddCommentBar extends Component {
     render () {
         return (
             <div className="AddCommentBar">
-                        <CommentIcon />
-            <div className="comment-new" onKeyPress={this.handleKeyPress}>
-                <textarea ref="newCommentTA" />
-            </div>
+                <CommentIcon />
+                <div className="comment-new" onKeyPress={this.handleKeyPress}>
+                    <textarea ref="newCommentTA" />
+                </div>
             </div>
            
         );

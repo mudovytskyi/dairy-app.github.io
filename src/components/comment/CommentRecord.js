@@ -1,15 +1,20 @@
 import  React, { Component } from 'react';
 import CommentIcon from './CommentIcon';
-
-class CommentRecord extends Component {
-    render () {
-        return (
-            <div className="CommentRecord">
+/* <div className="CommentRecord">
             <CommentIcon />
             <div className="comment-name">
                 <span>{this.props.value}</span>
             </div>
-        </div>
+        </div> */
+class CommentRecord extends Component {
+    render () {
+        return (
+            <div className="CommentRecord">
+                <CommentIcon />
+                <div className="comment-name">
+                    <span>{this.props.value}</span>
+                </div>
+            </div>
         );
     }
 }
