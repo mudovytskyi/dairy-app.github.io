@@ -41,4 +41,5 @@ if (storageAvailable('localStorage')) {
 
 
 ReactDOM.render(<App {...JSON.parse(localStorage.getItem("tasks")) || []} />, document.getElementById('root'));
+// ReactDOM.render(<App tasks={[]} />, document.getElementById('root'));
 registerServiceWorker();

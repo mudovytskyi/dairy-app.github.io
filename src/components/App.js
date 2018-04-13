@@ -8,6 +8,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    
     this.state = { 
       tasks: this.props.tasks,
       currentTaskID: this.props.currentTaskID,
@@ -16,7 +17,7 @@ class App extends Component {
   }
   
   fetchTask = () => {
-    return  this.props.tasks.find( task => {
+     return  this.props.tasks.find( task => {
         return task._id === this.props.currentTaskID;
       }) || {};
   };
