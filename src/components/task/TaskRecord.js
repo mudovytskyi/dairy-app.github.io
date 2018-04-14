@@ -4,15 +4,15 @@ import $ from 'jquery';
 class TaskRecord extends Component {
 
     handleClick = () => {
-        console.log(this.props._id);
         this.props.onClick(this.props._id)
      };
 
      handleSelected = (event) => {
-        // console.log("pass", event.target);
         $('.task-selected').removeClass('task-selected');
         $(event.currentTarget).addClass('task-selected');
+        this.props.onSelect(this.props._id);
      };
+
 /*  <div className="TaskRecord">
                 <div className="task-name">
                     <span>{this.props.name}</span>
@@ -25,7 +25,6 @@ class TaskRecord extends Component {
                 </div>
             </div> */
     render () {
-        console.log(this.props.selected)
         return (
             <li className={(this.props.selected == true) ? "TaskRecord task-selected" : "TaskRecord"} onClick={this.handleSelected.bind(this)}>
                 <div className="indicator"/>
