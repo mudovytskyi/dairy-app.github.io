@@ -28,7 +28,7 @@ class CommentListView extends Component {
     render () {
         return (
             <div className="CommentListView">
-            <p className="App-title">Comments #{this.props.taskID}</p>
+            <p className="App-title">Comments #{this.props.taskID > -1 ? this.props.taskID : ""}</p>
             <CommentList items={this.props.comments}/>
             <AddCommentBar addComment={this.addComment}/>
              </div>

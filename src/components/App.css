@@ -152,6 +152,7 @@ html, body {
   display: flex;
   align-items: center;
   vertical-align: middle;
+  
 }
 
 .task-name {
@@ -159,8 +160,6 @@ html, body {
   text-align: left;
   font-size: 1.5em;
   line-height: 1.5em;
- 
-  
 }
 
 input[type="button"] , input[type="submit"] {
@@ -214,10 +213,16 @@ input[type="button"].delete-btn {
   box-shadow: -1px 1px 10px #bababa;
   overflow: auto;
 } 
+.CommentListView nav {
+  padding: 0;
+  margin: 0;
+}
 .CommentList {
   width: 100%;
   height: 600px;
-  padding-top: 35px;  
+  padding-top: 15px;
+  margin-left: -40px;
+  /* padding-top: 35px;   */
   overflow: hidden;
   overflow-y: auto;
 }
