@@ -5,11 +5,7 @@ import CommentIcon from './CommentIcon';
 class AddCommentBar extends Component {
 
     handleKeyPress = (event) => {
-        // event.preventDefault();
-        
-        
-        if (event.ctrlKey && event.keyCode == 13) {
-           console.log("pass")
+        if (event.ctrlKey && event.charCode == 13) {
             let newCommentValue = this.refs.newCommentTA.value;
             if (newCommentValue) {
                 this.props.addComment(newCommentValue);

@@ -10,23 +10,20 @@ class AddTaskBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // console.log('test');
-        // console.log(this.refs.newNameInput.value);
         // read the value that the user types
         let newTaskValue = this.refs.newTaskInput.value;
         if (newTaskValue) {
             this.addTask(newTaskValue);
         }
     }
-    handleKeyPress = (event) => {
-        // event.preventDefault();
 
+    handleKeyPress = (event) => {
         let newTaskValue = this.refs.newTaskInput.value;
-        console.log(event)
-        if (newTaskValue && event.keyCode == 13) {
+        if (newTaskValue && event.charCode == 13) {
            this.addTask(newTaskValue);
         }
     }
+
     /* <div className="AddTaskBar">
             <form onSubmit={this.handleSubmit}> 
                 <input type="text" 

@@ -4,8 +4,6 @@ import DairyContent from './DairyContent';
 import './App.css';
 import TaskListView from './task/TaskListView';
 import CommentListView from './comment/CommentListView';
-// import $ from 'jquery';
-// window.jQuery = window.$ = $;
 
 class App extends Component {
   constructor(props) {
@@ -14,13 +12,12 @@ class App extends Component {
     this.state = { 
       tasks: this.props.tasks,
       currentTaskID: this.props.currentTaskID,
-      currentTask: this.fetchTask(this.props.currentTaskID),
       lastTaskID: this.props.lastTaskID,
     };
   }
   
   fetchTask = (taskID) => {
-     return  this.props.tasks.find( task => {
+     return  this.state.tasks.find( task => {
         return task._id === taskID;
       }) || {};
   };
@@ -31,7 +28,7 @@ class App extends Component {
                 comments: [],
               };
     this.setState({
-      currentTask: newTask,
+      // currentTask: newTask,
       currentTaskID: newTask._id,
       tasks: [...this.state.tasks, newTask],
       lastTaskID: newTask._id,
@@ -42,19 +39,15 @@ class App extends Component {
 
   deleteTaskHandler = (taskID) => {
     let taskToDelete = this.fetchTask(taskID);
-    console.log(taskToDelete)
     let index = this.state.tasks.indexOf(taskToDelete);
     let updatedTaskList = this.state.tasks.slice();
     updatedTaskList.splice(index, 1);
-    console.log(index, updatedTaskList)
+    
     this.setState({
       tasks: updatedTaskList,
-      currentTask: (taskToDelete === this.state.currentTask)  // remove, leave only currentTaskID
-        ? {} // clear styling
-        : this.state.currentTask, 
-      currentTaskID: (taskToDelete === this.state.currentTask) 
-      ? -1
-      : this.state.currentTask._id,
+      currentTaskID: ((taskToDelete._id === this.state.currentTaskID) 
+                          ? -1
+                          : this.state.currentTaskID),
     })
 
     //CALL STORAGE
@@ -65,15 +58,19 @@ class App extends Component {
     let taskToUpdate = Object.assign({}, this.state.currentTask);
     let index = this.state.tasks.indexOf(this.state.currentTask);
     taskToUpdate.comments.push(newComment);
+
+    let updatedTaskList = this.state.tasks.slice();
+    updatedTaskList.splice(index, 1, taskToUpdate);
+    
     this.setState({
       currentTask: taskToUpdate,
-      tasks: this.state.tasks.slice().splice(index, 1, taskToUpdate),
+      tasks: updatedTaskList,
     })
 
     //CALL STORAGE
   }
 
-  selectTask = (taskID) => {
+  selectTaskHandler = (taskID) => {
     this.setState({
       currentTask: this.fetchTask(taskID),
       currentTaskID: taskID,
@@ -96,7 +93,7 @@ class App extends Component {
              dairy app 
           </div>
           <div className="App-slogan">
-             with no sense
+             Comment with no sense
           </div>
         </div>
        
@@ -104,9 +101,12 @@ class App extends Component {
              <TaskListView tasks={this.state.tasks}
                taskID={this.state.currentTaskID} 
                onAdd={this.addNewTaskHandler}
-               onDelete={this.deleteTaskHandler}/>
-             <CommentListView comments={this.state.currentTask.comments}
-                taskID={this.state.currentTaskID}/>
+               onDelete={this.deleteTaskHandler}
+               onSelect={this.selectTaskHandler}/>
+             <CommentListView comments={this.fetchTask(this.state.currentTaskID).comments}
+                onAdd={this.addNewCommentHandler}
+                task={this.fetchTask(this.state.currentTaskID)}
+                taskIndex={this.state.tasks.indexOf(this.state.currentTask)}/>
         </div>
       </div>
     );

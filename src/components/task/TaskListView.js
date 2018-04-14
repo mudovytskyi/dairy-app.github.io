@@ -1,38 +1,16 @@
 import  React, { Component } from 'react';
 import AddTaskBar from './AddTaskBar';
 import TaskList from './TaskList';
-import $ from 'jquery';
+
 class TaskListView extends Component {
-    addTask = (newTaskName) => {
-        // console.log(newTaskName)
-        this.props.onAdd(newTaskName);
-        // setTimeout(() => $("TaskRecord:last").scrollntToView(), 1000);
-
-        // api;
-        // api.addName(newName, contestId).then(resp =>
-        //     this.setState({
-        //         contests: {
-        //             ...this.state.contests,
-        //             [resp.updatedContest._id]: resp.updatedContest
-        //         },
-        //         names: {
-        //             ...this.state.names,
-        //             [resp.newName._id]: resp.newName
-        //         }
-        //     })
-        // )
-        // .catch(error => {
-        //     this.currentContest().description = 'Error';
-        // });
-    };
-
+   
     render () {
-        console.log(this.props.tasks)
         return (
             <div className="TaskListView">
             <p className="App-title">Items</p>
-            <AddTaskBar addTask={this.addTask}/>
+            <AddTaskBar addTask={this.props.onAdd}/>
             <TaskList items={this.props.tasks} 
+            onSelect={this.props.onSelect}
             selectedTask={this.props.taskID} 
             onDelete={this.props.onDelete}/>
              </div>

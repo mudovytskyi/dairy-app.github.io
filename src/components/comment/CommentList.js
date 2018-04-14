@@ -1,13 +1,18 @@
 import  React, { Component } from 'react';
 import CommentRecord from './CommentRecord';
+import {animateScroll} from 'react-scroll';
 
 class CommentList extends Component {
+
+    componentDidUpdate () {
+        animateScroll.scrollToBottom({containerId: 'container'});
+    }
+    
     render () {
-        // console.log(this.props.items)
         if(this.props.items) {
             return (
                 <nav>
-                    <ul className="CommentList">{
+                    <ul id="container" className="CommentList">{
                             Object.keys(this.props.items).map(commentID =>
                                 
                                 <CommentRecord 
