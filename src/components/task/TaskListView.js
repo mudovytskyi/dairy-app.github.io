@@ -4,8 +4,10 @@ import TaskList from './TaskList';
 import $ from 'jquery';
 class TaskListView extends Component {
     addTask = (newTaskName) => {
-        console.log(newTaskName)
-        // $("li:last").scrollntToView();
+        // console.log(newTaskName)
+        this.props.onAdd(newTaskName);
+        // setTimeout(() => $("TaskRecord:last").scrollntToView(), 1000);
+
         // api;
         // api.addName(newName, contestId).then(resp =>
         //     this.setState({
@@ -30,7 +32,9 @@ class TaskListView extends Component {
             <div className="TaskListView">
             <p className="App-title">Items</p>
             <AddTaskBar addTask={this.addTask}/>
-            <TaskList items={this.props.tasks}/>
+            <TaskList items={this.props.tasks} 
+            selectedTask={this.props.taskID} 
+            onDelete={this.props.onDelete}/>
              </div>
         );
     }
