@@ -1,3 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+<h1>dairy-app</h1>
 
-It is the test app.
+<p> It is the test app. Ought to <h2>have a <bold>1080p</bold> screen resolution</h2> in order to test the matching of the app layout on preciseness.</p>
+
+Thank you.
