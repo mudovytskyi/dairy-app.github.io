@@ -1,6 +1,5 @@
 import  React, { Component } from 'react';
 
-
 class AddTaskBar extends Component {
     
     addTask = (value) => {
@@ -10,7 +9,7 @@ class AddTaskBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // read the value that the user types
+
         let newTaskValue = this.refs.newTaskInput.value;
         if (newTaskValue) {
             this.addTask(newTaskValue);
@@ -24,14 +23,6 @@ class AddTaskBar extends Component {
         }
     }
 
-    /* <div className="AddTaskBar">
-            <form onSubmit={this.handleSubmit}> 
-                <input type="text" 
-                    ref="newTaskInput"
-                    placeholder="Type name here..." />
-                <input type="submit" value="Add new"/>
-            </form>
-            </div> */
     render () {
         return (
             <div className="AddTaskBar">
@@ -46,4 +37,5 @@ class AddTaskBar extends Component {
         );
     }
 }
+
 export default AddTaskBar;

@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import testData from './testData.json';
 
-let localStorage, inputData;
+let localStorage, inputData = {};
 const STORAGE_NAME = 'storage';
 
 function storageAvailable(type) {
@@ -33,26 +32,15 @@ function storageAvailable(type) {
 }
 
 if (storageAvailable('localStorage')) {
-    // Yippee! We can use localStorage awesomeness
     localStorage = window.localStorage;
-    // localStorage.setItem("tasks", JSON.stringify(testData));
-    console.log('index', localStorage.getItem(STORAGE_NAME));
     inputData = JSON.parse(localStorage.getItem(STORAGE_NAME)) || {};
-}
-else {
-    // Too bad, no localStorage for us
 }
 
 function updateStorage(storageData) {
     if (storageAvailable('localStorage')) {
-        console.log('upcoming data', JSON.stringify(storageData));
         localStorage.setItem(STORAGE_NAME, JSON.stringify(storageData));
-        console.log('saved', localStorage.getItem(STORAGE_NAME));
-
     }
 }
 
-
-// ReactDOM.render(<App {...JSON.parse(localStorage.getItem("tasks")) || []} />, document.getElementById('root'));
 ReactDOM.render(<App {...inputData} onUpdate={updateStorage}/>, document.getElementById('root'));
 registerServiceWorker();

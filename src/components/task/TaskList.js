@@ -1,5 +1,5 @@
 import  React, { Component } from 'react';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import TaskRecord from './TaskRecord';
 import {animateScroll} from 'react-scroll';
 import $ from 'jquery';
@@ -10,19 +10,14 @@ class TaskList extends Component {
         animateScroll.scrollToBottom({containerId: 'container'});
     }
 
-    
-
     render () {
-        console.log(this.props.items);
         return (
             <nav> 
-            <div className="indicator"/>
-            <ul id='container' className="TaskList">{
+            <ul id='container' className="TaskList"> {
                 Object.keys(this.props.items).map(taskID =>
                         {   
                             let task = this.props.items[taskID];
-                            console.log('in record', taskID, task);
-                            let record = (task._id === this.props.selectedTask) 
+                            let record = (task._id === this.props.selectedTaskID) 
                                 ? <TaskRecord key = {taskID} selected {...task} onClick={this.props.onDelete} 
                                     onSelect={this.props.onSelect} />
                                 : <TaskRecord key = {taskID} {...task} onClick={this.props.onDelete} 
@@ -30,18 +25,19 @@ class TaskList extends Component {
                             
                             return record;
                         }
-                   
-                )
-            }
-            
-            </ul>
+                    )
+                }
+                </ul>
             </nav>
         );
     }
 }
 
 TaskList.propTypes = {
-    
+    selectedTaskID: PropTypes.number.isRequired,
+    items: PropTypes.array.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
 };
 
 export default TaskList;

@@ -4,10 +4,8 @@ class CommentIcon extends Component {
     render () {
         return (
             <div className="CommentIcon">
-            <div className="placeholder-icon" >
-                
+                <div className="placeholder-icon" />
             </div>
-        </div>
         );
     }
 }

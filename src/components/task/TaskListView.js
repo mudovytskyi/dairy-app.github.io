@@ -10,17 +10,17 @@ class TaskListView extends Component {
     }
 
     render () {
-        console.log('list', this.props.tasks)
         return (
             <div className="TaskListView">
-            <p className="App-title">Items</p>
-            <AddTaskBar addTask={this.onAddNewHandler}/>
-            <TaskList ref='list' items={this.props.tasks} 
-            onSelect={this.props.onSelect}
-            selectedTask={this.props.taskID} 
-            onDelete={this.props.onDelete}/>
+                <p className="App-title">Items</p>
+                <AddTaskBar addTask={this.onAddNewHandler}/>
+                <TaskList ref='list' items={this.props.tasks} 
+                    onSelect={this.props.onSelect}
+                    selectedTaskID={this.props.taskID} 
+                    onDelete={this.props.onDelete}/>
              </div>
         );
     }
 }
+
 export default TaskListView;
