@@ -19,7 +19,7 @@ class AddTaskBar extends Component {
 
     handleKeyPress = (event) => {
         let newTaskValue = this.refs.newTaskInput.value;
-        if (newTaskValue && event.charCode == 13) {
+        if (newTaskValue && event.charCode === 13) {
            this.addTask(newTaskValue);
         }
     }

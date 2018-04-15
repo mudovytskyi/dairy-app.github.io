@@ -166,6 +166,11 @@ html, body {
   background-color: #f72d57;
   visibility: hidden;
 }
+.TaskList .indicator {
+  visibility: visible;
+  background-color: #47568c;
+}
+
 .task {
   display: flex;
   align-items: center;
@@ -270,6 +275,7 @@ input[type="button"].delete-btn {
   text-align: left;
   color: #666666;
   hyphens: auto;
+  white-space: pre-line;
 }
 
 .placeholder-icon {
@@ -298,6 +304,9 @@ input[type="button"].delete-btn {
   height: 100%;
 }
 
+.comment-new textarea:disabled {
+  background-color: #eeeeee;
+}
 .comment-new textarea {
   border: 2px solid #cccccc;
   font: 300 1.14em/1.5em "Open Sans";
@@ -305,6 +314,8 @@ input[type="button"].delete-btn {
   color: #666666;
   hyphens: auto;
   padding-left: 0.5em;
+  padding-top: 0.2em;
   resize: none;
   margin-left: 25px;
+  white-space: pre-wrap;
 }
