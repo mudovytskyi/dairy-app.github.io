@@ -10,16 +10,34 @@ class App extends Component {
     super(props);
     
     this.state = { 
-      tasks: this.props.tasks,
-      currentTaskID: this.props.currentTaskID,
-      lastTaskID: this.props.lastTaskID,
+      tasks: this.props.tasks || [],
+      currentTaskID: this.props.currentTaskID || -1,
+      lastTaskID: this.props.lastTaskID || 0,
     };
+
+    this.getComments = this.getComments.bind(this);
+    this.getIndex = this.getIndex.bind(this);
   }
   
+  componentWillUpdate() {
+    console.log('will')
+    console.log(this.state)
+  }
+
+  componentDidUpdate() {
+    console.log('did')
+    console.log(this.state)
+    this.props.onUpdate(this.state);
+  }
+
   fetchTask = (taskID) => {
-     return  this.state.tasks.find( task => {
+    // console.log(this.state.tasks, this.state.tasks.length)
+    if (this.state.tasks.length) {
+      return  this.state.tasks.find( task => {
         return task._id === taskID;
       }) || {};
+    }
+    return {};
   };
 
   addNewTaskHandler = (newTaskName) => {
@@ -28,13 +46,14 @@ class App extends Component {
                 comments: [],
               };
     this.setState({
-      // currentTask: newTask,
       currentTaskID: newTask._id,
       tasks: [...this.state.tasks, newTask],
       lastTaskID: newTask._id,
     });
 
     //CALL STORAGE
+    // this.shouldComponentUpdate()
+    // this.props.onUpdate(this.getStorageDataObj());
   }
 
   deleteTaskHandler = (taskID) => {
@@ -51,31 +70,60 @@ class App extends Component {
     })
 
     //CALL STORAGE
+    // this.props.onUpdate(this.getStorageDataObj());
   }
 
 
   addNewCommentHandler = (newComment) => {
-    let taskToUpdate = Object.assign({}, this.state.currentTask);
-    let index = this.state.tasks.indexOf(this.state.currentTask);
+    // let taskToUpdate = Object.assign({}, this.state.currentTask);
+    let currentTask = this.fetchTask(this.state.currentTaskID)
+    let taskToUpdate = Object.assign({}, currentTask);
+    let index = this.state.tasks.indexOf(currentTask);
     taskToUpdate.comments.push(newComment);
 
     let updatedTaskList = this.state.tasks.slice();
     updatedTaskList.splice(index, 1, taskToUpdate);
     
     this.setState({
-      currentTask: taskToUpdate,
+      // currentTask: taskToUpdate,
       tasks: updatedTaskList,
     })
 
     //CALL STORAGE
+    // console.log(this.state)
+    // this.props.onUpdate(this.state);
   }
 
   selectTaskHandler = (taskID) => {
     this.setState({
-      currentTask: this.fetchTask(taskID),
+      // currentTask: this.fetchTask(taskID),
       currentTaskID: taskID,
     })
   }
+
+  getComments = () => {
+    console.log(this.state.currentTaskID, this.props.currentTaskID)
+    let task = this.fetchTask(this.state.currentTaskID);
+    console.log('fromcoms', task, task.hasOwnProperty('comments'))
+    return 
+      task.hasOwnProperty('comments') 
+        ? task.comments || [] : [];
+  }
+
+  getIndex = () => {
+    return
+      this.state.tasks.indexOf(this.fetchTask(this.state.currentTaskID));
+  }
+
+  // getStorageDataObj = () => {
+    // console
+    // return {
+    //     "currentTaskID": this.state.currentTaskID,
+    //     "lastTaskID": this.state.lastTaskID,
+    //     "tasks" : this.state.tasks,
+    // };
+    // return this.state;
+  // }
 
   /*  <div className="App">
         <DairyCover />
@@ -86,6 +134,7 @@ class App extends Component {
       </div>
        */
   render() {
+    console.log('app', this.state.tasks)
     return (
         <div className="App">
           <div className="DairyCover">
@@ -103,10 +152,10 @@ class App extends Component {
                onAdd={this.addNewTaskHandler}
                onDelete={this.deleteTaskHandler}
                onSelect={this.selectTaskHandler}/>
-             <CommentListView comments={this.fetchTask(this.state.currentTaskID).comments}
+             <CommentListView 
+                comments={this.fetchTask(this.state.currentTaskID).comments || []}
                 onAdd={this.addNewCommentHandler}
-                task={this.fetchTask(this.state.currentTaskID)}
-                taskIndex={this.state.tasks.indexOf(this.state.currentTask)}/>
+                taskIndex={this.state.tasks.indexOf(this.fetchTask(this.state.currentTaskID))}/>
         </div>
       </div>
     );
