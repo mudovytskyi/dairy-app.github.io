@@ -7,23 +7,16 @@ class CommentList extends Component {
     componentDidUpdate () {
         animateScroll.scrollToBottom({containerId: 'containerComments'});
     }
-
-    // componentWillMount() {
-    //     animateScroll.scrollToBottom({containerId: 'containerComments'});
-    // }
     
     render () {
-        if(this.props.items) {
+        if (this.props.items) {
             return (
                 <nav>
                     <ul id="containerComments" className="CommentList">{
                             Object.keys(this.props.items).map(commentID =>
-                                
                                 <CommentRecord 
-                                key = {commentID}
-                                value={this.props.items[commentID]}
-                                />
-                                
+                                    key = {commentID}
+                                    value={this.props.items[commentID]} />
                             )
                         }
                     </ul>
@@ -31,7 +24,7 @@ class CommentList extends Component {
                 );
         } else {
             return (
-                <div className="CommentList"/>
+                <ul className="CommentList"/>
             );
         }
     }
