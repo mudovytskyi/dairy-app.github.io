@@ -1,110 +1,115 @@
-import React, { Component } from 'react';
-import './App.css';
-import TaskListView from './task/TaskListView';
-import CommentListView from './comment/CommentListView';
+import React, { Component } from 'react'
+import './App.css'
+import AddTaskBar from '../containers/task/AddTaskBar'
+import TaskListView from '../containers/task/TaskListView'
+import CommentListView from '../containers/comment/CommentListView'
+import AddCommentBar from '../containers/comment/AddCommentBar'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      tasks: this.props.tasks || [],
-      currentTaskID: this.props.currentTaskID || -1,
-      lastTaskID: this.props.lastTaskID || 0,
-    };
+    // this.state = {
+    //   tasks: this.props.tasks || [],
+    //   currentTaskID: this.props.currentTaskID || -1,
+    //   lastTaskID: this.props.lastTaskID || 0,
+    // };
   }
 
-  componentDidUpdate() {
-    this.props.onUpdate(this.state);
-  }
+  // componentDidUpdate() {
+  //   this.props.onUpdate(this.state);
+  // }
 
-  fetchTask = (taskID) => {
-    if (this.state.tasks.length) {
-      return this.state.tasks.find(task => {
-        return task._id === taskID;
-      }) || {};
-    }
-    return {};
-  };
+  // fetchTask = (taskID) => {
+  //   if (this.state.tasks.length) {
+  //     return this.state.tasks.find(task => {
+  //       return task._id === taskID;
+  //     }) || {};
+  //   }
+  //   return {};
+  // };
 
-  addNewTaskHandler = (newTaskName) => {
-    let newTask = {
-      _id: this.state.lastTaskID + 1,
-      name: newTaskName,
-      comments: [],
-    };
-    
-    this.setState({
-      currentTaskID: newTask._id,
-      tasks: [...this.state.tasks, newTask],
-      lastTaskID: newTask._id,
-    });
+  // addNewTaskHandler = (newTaskName) => {
+  //   let newTask = {
+  //     _id: this.state.lastTaskID + 1,
+  //     name: newTaskName,
+  //     comments: [],
+  //   };
 
-    //CALL STORAGE
-  }
+  //   this.setState({
+  //     currentTaskID: newTask._id,
+  //     tasks: [...this.state.tasks, newTask],
+  //     lastTaskID: newTask._id,
+  //   });
 
-  deleteTaskHandler = (taskID) => {
-    let taskToDelete = this.fetchTask(taskID);
-    let index = this.state.tasks.indexOf(taskToDelete);
-    let updatedTaskList = this.state.tasks.slice();
-    updatedTaskList.splice(index, 1);
+  //   //CALL STORAGE
+  // }
 
-    this.setState({
-      tasks: updatedTaskList,
-      currentTaskID: ((taskToDelete._id === this.state.currentTaskID) ?
-        -1 :
-        this.state.currentTaskID),
-    })
+  // deleteTaskHandler = (taskID) => {
+  //   let taskToDelete = this.fetchTask(taskID);
+  //   let index = this.state.tasks.indexOf(taskToDelete);
+  //   let updatedTaskList = this.state.tasks.slice();
+  //   updatedTaskList.splice(index, 1);
 
-    //CALL STORAGE
-  }
+  //   this.setState({
+  //     tasks: updatedTaskList,
+  //     currentTaskID: ((taskToDelete._id === this.state.currentTaskID) ?
+  //       -1 :
+  //       this.state.currentTaskID),
+  //   })
+
+  //   //CALL STORAGE
+  // }
 
 
-  addNewCommentHandler = (newComment) => {
-    let currentTask = this.fetchTask(this.state.currentTaskID)
-    let taskToUpdate = Object.assign({}, currentTask);
-    let index = this.state.tasks.indexOf(currentTask);
-    taskToUpdate.comments.push(newComment);
+  // addNewCommentHandler = (newComment) => {
+  //   let currentTask = this.fetchTask(this.state.currentTaskID)
+  //   let taskToUpdate = Object.assign({}, currentTask);
+  //   let index = this.state.tasks.indexOf(currentTask);
+  //   taskToUpdate.comments.push(newComment);
 
-    let updatedTaskList = this.state.tasks.slice();
-    updatedTaskList.splice(index, 1, taskToUpdate);
+  //   let updatedTaskList = this.state.tasks.slice();
+  //   updatedTaskList.splice(index, 1, taskToUpdate);
 
-    this.setState({
-      tasks: updatedTaskList,
-    })
+  //   this.setState({
+  //     tasks: updatedTaskList,
+  //   })
 
-    //CALL STORAGE
-  }
+  //   //CALL STORAGE
+  // }
 
-  selectTaskHandler = (taskID) => {
-    this.setState({
-      currentTaskID: taskID,
-    })
-  }
+  // selectTaskHandler = (taskID) => {
+  //   this.setState({
+  //     currentTaskID: taskID,
+  //   })
+  // }
 
   render() {
-    return ( <div className = "App">
-                <div className = "DairyCover">
-                  <div className = "App-name">
-                      dairy app
-                  </div> 
-                  <div className = "App-slogan">
-                      Comment with no sense
-                  </div>
-                 </div>
-                <div className = "DairyContent">
-                  <TaskListView tasks={this.state.tasks}
-                      taskID={this.state.currentTaskID}
-                      onAdd={this.addNewTaskHandler}
-                      onDelete={this.deleteTaskHandler}
-                      onSelect={this.selectTaskHandler}/> 
-                  <CommentListView comments={this.fetchTask(this.state.currentTaskID).comments || []}
-                      onAdd={this.addNewCommentHandler}
-                      taskIndex={this.state.tasks.indexOf(this.fetchTask(this.state.currentTaskID))}/> 
-                </div>
-            </div>
-          );
-    }
+    return (
+      <div className="App">
+        <div className="DairyCover">
+          <div className="App-name">
+            dairy app
+        </div>
+          <div className="App-slogan">
+            Comment with no sense
+        </div>
+        </div>
+        <div className="DairyContent">
+          <div className="TaskListView">
+            <p className="App-title">Items</p>
+            <AddTaskBar />
+            <TaskListView />
+          </div>
+          <div className="CommentListView">
+            <p className="App-title">Comments #{this.props.taskIndex > -1 ? this.props.taskIndex + 1 : ""}</p>
+            <CommentListView />
+            <AddCommentBar />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -4,7 +4,14 @@ import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-let localStorage, inputData = {};
+// add redux logic
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
+
+
+
+let localStorage, initialData = {};
 const STORAGE_NAME = 'storage';
 
 function storageAvailable(type) {
@@ -15,7 +22,7 @@ function storageAvailable(type) {
         storage.removeItem(x);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e instanceof DOMException && (
             // everything except Firefox
             e.code === 22 ||
@@ -33,14 +40,22 @@ function storageAvailable(type) {
 
 if (storageAvailable('localStorage')) {
     localStorage = window.localStorage;
-    inputData = JSON.parse(localStorage.getItem(STORAGE_NAME)) || {};
+    initialData = JSON.parse(localStorage.getItem(STORAGE_NAME)) || {};
 }
 
 function updateStorage(storageData) {
+    console.log("STORAGE UPDATED")
     if (storageAvailable('localStorage')) {
-        localStorage.setItem(STORAGE_NAME, JSON.stringify(storageData));
+        localStorage.setItem(STORAGE_NAME, JSON.stringify(reduxStore.getState()));
     }
 }
 
-ReactDOM.render(<App {...inputData} onUpdate={updateStorage}/>, document.getElementById('root'));
+let reduxStore = createStore(rootReducer, initialData)
+let unsubscribe = reduxStore.subscribe(updateStorage)
+
+ReactDOM.render(<Provider store={reduxStore}>
+                    <App/>
+                </Provider>,
+                document.getElementById('root'));
+// ReactDOM.render(<App {...inputData} onUpdate={updateStorage} />, document.getElementById('root'));
 registerServiceWorker();
